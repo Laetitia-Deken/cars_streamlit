@@ -15,25 +15,26 @@ st.table(df_cars)
 
 
 
-st.title('Graphique interactif de distribution')
+st.title('Graphique interactif de distribution filtré par région')
 
 continent = st.radio("Choix de la zone géographique pour afficher les voitures selon leur cylindre", ("US", "Europe", "Japon"))
 if continent == "US":
     dp_cars = sns.countplot(df_cars[df_cars['continent'].str.contains('US.')]['cylinders'])
     st.pyplot(dp_cars.figure)
     st.write('Voici le graphique filtré sur les US.')
-    st.write('Le nombre moyen de cylindres est :', round(df_cars[df_cars['continent'].str.contains('US.')]['cylinders'].mean(),2))
+    st.write('Le nombre moyen de cylindres est :', round(df_cars[df_cars['continent'].str.contains('US.')]['cylinders'].mean(),2), annot = True)
 elif continent == "Europe" :
     dp_cars2 = sns.countplot(df_cars[df_cars['continent'].str.contains('Europe.')]['cylinders'])
     st.pyplot(dp_cars2.figure)
     st.write("Voici le graphique filtré sur l'Europe.")
-    st.write('Le nombre moyen de cylindres est :', round(df_cars[df_cars['continent'].str.contains('Europe.')]['cylinders'].mean(),2))
+    st.write('Le nombre moyen de cylindres est :', round(df_cars[df_cars['continent'].str.contains('Europe.')]['cylinders'].mean(),2), annot = True)
 elif continent == "Japon":
     dp_cars3 = sns.countplot(df_cars[df_cars['continent'].str.contains('Japan.')]['cylinders'])
     st.pyplot(dp_cars3.figure)
     st.write("Voici le graphique filtré sur le Japon.")
-    st.write('Le nombre moyen de cylindres est :', round(df_cars[df_cars['continent'].str.contains('Japan.')]['cylinders'].mean(),2))
-    
+    st.write('Le nombre moyen de cylindres est :', round(df_cars[df_cars['continent'].str.contains('Japan.')]['cylinders'].mean(),2), annot = True)
+    st.write("Les voitures américaines sont celles qui possèdent le plus de cylindres. Ce sont les plus puissantes.")
+    st.write("Le nombre moyen de cylindres des voitures européennes et japonaises sont très proches.")
        
     
 st.title('Graphique de corrélations filtré par région')
@@ -52,6 +53,7 @@ elif continent2 == "Japon":
     hm_cars3 = sns.heatmap(df_cars[df_cars['continent'].str.contains('Japan.')].corr(), center=0, cmap=sns.color_palette("vlag", as_cmap=True))
     st.pyplot(hm_cars3.figure, clear_figure = True)
     st.write("Voici la heatmap filtrée sur le Japon.")
+    st.write("Pour les trois régions, on reconnaît bien une corrélation positive entre 'cylinders', 'cubicinches', 'hp' et 'weightlbs'.")
 
 
 
