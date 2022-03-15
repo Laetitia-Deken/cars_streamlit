@@ -42,15 +42,15 @@ st.title('Graphique de corrélations filtré par région')
 
 continent2 = st.radio("Choix de la zone géographique pour la heatmap de corrélations :", ("US", "Europe", "Japon"))
 if continent2 == "US":
-    hm_cars = sns.heatmap(round(df_cars[df_cars['continent'].str.contains('US.')].corr(), 2), annot = True, center=0, cmap=sns.color_palette("vlag", as_cmap=True))
+    hm_cars = sns.heatmap(round(df_cars[df_cars['continent'].str.contains('US.')].corr(), 2)), annot = True, center=0, cmap=sns.color_palette("vlag", as_cmap=True)
     st.pyplot(hm_cars.figure, clear_figure = True)
     st.write('Voici la heatmap filtré sur les US.')
 elif continent2 == "Europe" :
-    hm_cars2 = sns.heatmap(round(df_cars[df_cars['continent'].str.contains('Europe.')].corr(), 2), annot = True, center=0, cmap=sns.color_palette("vlag", as_cmap=True))
+    hm_cars2 = sns.heatmap(round(df_cars[df_cars['continent'].str.contains('Europe.')].corr(), 2)), annot = True, center=0, cmap=sns.color_palette("vlag", as_cmap=True)
     st.pyplot(hm_cars2.figure, clear_figure = True)
     st.write("Voici la heatmap filtrée sur l'Europe.")
 elif continent2 == "Japon":
-    hm_cars3 = sns.heatmap(round(df_cars[df_cars['continent'].str.contains('Japan.')].corr(), 2), annot = True, center=0, cmap=sns.color_palette("vlag", as_cmap=True))
+    hm_cars3 = sns.heatmap(round(df_cars[df_cars['continent'].str.contains('Japan.')].corr(), 2)), annot = True, center=0, cmap=sns.color_palette("vlag", as_cmap=True)
     st.pyplot(hm_cars3.figure, clear_figure = True)
     st.write("Voici la heatmap filtrée sur le Japon.")
     st.write("Pour les trois régions, on reconnaît bien une corrélation positive entre 'cylinders', 'cubicinches', 'hp' et 'weightlbs'.")
