@@ -52,7 +52,9 @@ elif continent2 == "Japon":
     hm_cars3 = sns.heatmap(df_cars[df_cars['continent'].str.contains('Japan.')].corr(), center=0, cmap=sns.color_palette("vlag", as_cmap=True))
     st.pyplot(hm_cars3.figure, clear_figure = True)
     st.write("Voici la heatmap filtrée sur le Japon.")
+    st.write("Pour les 3 régions, 4 colonnes sont positivement corrélées (en rouge).")
 
+    
 
 
 
