@@ -19,8 +19,6 @@ st.title('Graphique interactif de distribution')
 
 continent = st.radio("Choix de la zone géographique pour afficher les voitures selon leur cylindre", ("US", "Europe", "Japon"))
 if continent == "US":
-    #bc =st.bar_chart(cars[cars['continent'].str.contains('US.')]['cylinders'])
-    #st.bar_chart(bc)
     dp_cars = sns.countplot(df_cars[df_cars['continent'].str.contains('US.')]['cylinders'])
     st.pyplot(dp_cars.figure)
     st.write('Voici le graphique filtré sur les US.')
