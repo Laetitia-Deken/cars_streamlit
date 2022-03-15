@@ -3,6 +3,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+
 st.title('Hello Wilders, bienvenue ! Analysons le dataset des voitures !')
 
 st.subheader('Découverte des possibilités de streamlit en affichant la base des voitures en entier (désolée pour le scroll ;).')
@@ -13,12 +14,11 @@ df_cars = pd.read_csv(link)
 st.table(df_cars)
 
 
+
 st.title('Graphique interactif de distribution')
 
 continent = st.radio("Choix de la zone géographique pour afficher les voitures selon leur cylindre", ("US", "Europe", "Japon"))
 if continent == "US":
-    #bc =st.bar_chart(cars[cars['continent'].str.contains('US.')]['cylinders'])
-    #st.bar_chart(bc)
     dp_cars = sns.countplot(df_cars[df_cars['continent'].str.contains('US.')]['cylinders'])
     st.pyplot(dp_cars.figure)
     st.write('Voici le graphique filtré sur les US.')
@@ -37,20 +37,28 @@ elif continent == "Japon":
        
     
 st.title('Graphique de corrélations filtré par région')
+
+
 continent2 = st.radio("Choix de la zone géographique pour la heatmap de corrélations :", ("US", "Europe", "Japon"))
 if continent2 == "US":
-    hm_cars = sns.heatmap(df_cars[df_cars['continent'].str.contains('US.')].corr(), center=0, annot=True, cmap=sns.color_palette("vlag", as_cmap=True))
+    hm_cars = sns.heatmap(df_cars[df_cars['continent'].str.contains('US.')].corr(), center=0, cmap=sns.color_palette("vlag", as_cmap=True))
     st.pyplot(hm_cars.figure, clear_figure = True)
     st.write('Voici la heatmap filtré sur les US.')
 elif continent2 == "Europe" :
-    hm_cars2 = sns.heatmap(df_cars[df_cars['continent'].str.contains('Europe.')].corr(), center=0, annot=True, cmap=sns.color_palette("vlag", as_cmap=True))
+    hm_cars2 = sns.heatmap(df_cars[df_cars['continent'].str.contains('Europe.')].corr(), center=0, cmap=sns.color_palette("vlag", as_cmap=True))
     st.pyplot(hm_cars2.figure, clear_figure = True)
     st.write("Voici la heatmap filtrée sur l'Europe.")
 elif continent2 == "Japon":
-    hm_cars3 = sns.heatmap(df_cars[df_cars['continent'].str.contains('Japan.')].corr(), center=0, annot=True, cmap=sns.color_palette("vlag", as_cmap=True))
+    hm_cars3 = sns.heatmap(df_cars[df_cars['continent'].str.contains('Japan.')].corr(), center=0, cmap=sns.color_palette("vlag", as_cmap=True))
     st.pyplot(hm_cars3.figure, clear_figure = True)
     st.write("Voici la heatmap filtrée sur le Japon.")
-    st.write("Pour les trois régions, on reconnaît bien une corrélation positive entre 'cylinders', 'cubicinches', 'hp' et 'weightlbs'.")
+
+
+
+
+                  
+
+
 
 
 
