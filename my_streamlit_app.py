@@ -4,9 +4,9 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 
-st.title('Hello Wilders, bienvenue ! Analysons le dataset des voitures !')
+st.title('Hello Wilders, bienvenue sur cette web app ! Analysons le dataset des voitures !')
 
-st.subheader('Découverte des possibilités de streamlit en affichant la base des voitures en entier (désolée pour le scroll ;).')
+st.subheader('Découverte des possibilités de Streamlit en affichant la base des voitures en entier (désolée pour le scroll ;-)).
 
 st.title("Importons d'abord le dataset :")
 link = "https://raw.githubusercontent.com/murpi/wilddata/master/quests/cars.csv"
